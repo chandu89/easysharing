@@ -1,0 +1,21 @@
+<% if current_user %> 
+  <div class="container bg-faded">
+    <h1 class="text-center"><h1>New Movie</h1></h1>
+  <div class="row">
+    <div class="col text-center"><p>Please add details below</p></div>
+  </div>
+  <hr>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="card card-body mb-2">
+        <%= render 'form', movie: @movie %>
+
+        <%= link_to 'Back', movies_path %>
+        <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<% end %>

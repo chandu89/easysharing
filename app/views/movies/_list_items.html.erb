@@ -1,0 +1,29 @@
+<% unless @movies.present? %>
+  <div class="row justify-content-center">
+    <div class="col-4">
+      There is no movie now
+    </div>
+  </div>
+<% end %>
+<ul class="list-group">
+  <% movies.each do |movie| %>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col">
+          <iframe src="https://www.youtube.com/embed/<%= movie_url(movie.video_url)%>?rel=0&autoplay=0" frameborder='0' allowfullscreen></iframe>
+        </div>
+        <div class="col">
+          <div class="row text-danger">
+            <strong><%= movie.movie_title %></strong>
+          </div>
+          <div class="row">
+            <p><%= movie.user.email %></p>
+          </div>
+          <div class="row">
+            <p><%= movie.description%></p>
+          </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

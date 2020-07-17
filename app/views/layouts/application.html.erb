@@ -10,8 +10,33 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+   <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand">Easy Sharing</a>
+      <div class="row col-6 justify-content-end">
+        <% if current_user %>
+          <div class="col-4">
+            <%= current_user.email %>
+          </div>
+          <div class="col-3 align-end">
+            <%= link_to 'New Movie', new_movie_path, class: 'btn btn-success' %>
+          </div>
+          <div class="col-3">
+            <%= link_to "Sign Out", destroy_user_session_path, class: 'btn btn-secondary', :method => :delete %>
+
+          </div>
+          
+        <% else %>
+          <div class="col-6"></div>
+          <div class="col-3 align-end">
+            <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %>
+          </div>
+          <div class="col-3" >
+            <%= link_to  "Sign Up", new_user_registration_path, class: 'btn btn-primary'  %>
+          </div>
+        <% end %>
+      </div>
+      </nav>
+      <%= render 'list_items', movies: @movies if @movies.present?%>
     <%= yield %>
   </body>
 </html>
