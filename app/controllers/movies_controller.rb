@@ -1,6 +1,7 @@
 # This controller is responsible for movies CRUD operation
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: :index
 
   # GET /movies
   # GET /movies.json
@@ -8,8 +9,12 @@ class MoviesController < ApplicationController
     @movies = if current_user.present?
                 current_user.movies.page(params[:page]).per_page(3)
               else
-                @movies = Movie.all.page(params[:page]).per_page(3)
+                Movie.all.page(params[:page]).per_page(3)
               end
+    respond_to do |format|
+      format.html
+      format.json { render json: @movies }
+    end
   end
 
   # GET /movies/1

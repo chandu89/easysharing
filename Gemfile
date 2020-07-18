@@ -18,6 +18,10 @@ gem 'will_paginate', '~> 3.1.0'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
+  gem 'rspec-rails', '~> 4.0.1'
+  gem 'faker', '~> 1.6.1'
+  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -31,6 +35,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'shoulda-matchers', '~> 3.0', require: false
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
