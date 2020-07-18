@@ -48,4 +48,5 @@ Then navigate to `localhost:3000` in your browser.
 * Rubocop for better coding practices
 * pagination implemented by using will_painate
 * Devise gem to support authentication.
+* Easy share logo added for branding the site.
 
