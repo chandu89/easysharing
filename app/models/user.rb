@@ -1,7 +1,6 @@
+# User model is used deal with your user related changes
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :movies
+  has_many :movies, dependent: :destroy
 end

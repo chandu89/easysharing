@@ -1,5 +1,6 @@
+# This controller is responsible for movies CRUD operation
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :set_movie, only: %i[show edit update destroy]
 
   # GET /movies
   # GET /movies.json
@@ -19,8 +20,7 @@ class MoviesController < ApplicationController
   end
 
   # GET /movies/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /movies
   # POST /movies.json
@@ -63,13 +63,14 @@ class MoviesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_movie
-      @movie = Movie.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def movie_params
-      params.require(:movie).permit(:video_url, :movie_title, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def movie_params
+    params.require(:movie).permit(:video_url, :movie_title, :description)
+  end
 end
