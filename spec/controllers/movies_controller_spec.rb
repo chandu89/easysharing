@@ -26,4 +26,20 @@ RSpec.describe MoviesController, type: :controller do
       end
     end
   end
+
+  describe '#create' do
+    context 'create a movie with valid params' do
+      it 'returns created status' do
+        post :create, params: { movie: FactoryGirl.attributes_for(:movie) }
+        expect(response).to have_http_status(:created)
+      end
+    end
+    context 'With invalid params' do
+      it 'returns unprocessable_entity' do
+        post :create, params: { movie: FactoryGirl.attributes_for(:movie, video_url: 'abc') }
+        expect(JSON.parse(response.body)['video_url']).to eql ["is invalid"]
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
+  end
 end
