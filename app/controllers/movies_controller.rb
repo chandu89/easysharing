@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = (current_user.present? ? current_user.movies : Movie.all)
+    @movies = (current_user.present? ? current_user.movies.page(params[:page]).per_page(3) : Movie.all.page(params[:page]).per_page(3))
   end
 
   # GET /movies/1
