@@ -14,6 +14,16 @@ a:hover {
 a.btn{
   color: white;
 }
+
+p.nav-toggle {
+  text-decoration: none;
+  color: #105cb6;
+  &:hover, &:focus {
+    color: red;
+    border-color: #000033;
+  }
+}
+
 .align-end{
   text-align: end;
 }

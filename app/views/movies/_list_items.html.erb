@@ -19,8 +19,11 @@
           <div class="row">
             <p><%= movie.user.email %></p>
           </div>
-          <div class="row">
-            <p><%= movie.description.truncate(400)%></p>
+          <div class="row" >
+            <p><%= sliced_text(movie.description)%></p>
+
+            <div id="collapse" style="display:none"><%= sliced_text(movie.description, false)%></div>
+            <p class="nav-toggle">Read More</p>
           </div>
         </div>
       </div>
