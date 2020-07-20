@@ -20,10 +20,10 @@
             <p><%= movie.user.email %></p>
           </div>
           <div class="row" >
-            <p><%= sliced_text(movie.description)%></p>
+            <p><%= simple_format(movie.description).truncate(400) %></p>
 
-            <div id="collapse" style="display:none"><%= sliced_text(movie.description, false)%></div>
-            <p class="nav-toggle">Read More</p>
+            <!-- <div id="collapse" style="display:none"><%= sliced_text(movie.description, false)%></div>
+            <p href='#collapse' class="nav-toggle">Read More</p> -->
           </div>
         </div>
       </div>
@@ -32,4 +32,3 @@
 </ul>
 
 <%= will_paginate movies, previous_label: h("<"), next_label: h(">") %>
-
